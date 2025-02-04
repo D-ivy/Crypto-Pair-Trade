@@ -1,0 +1,35 @@
+graph TD
+    subgraph DATA_PHASE[2. DATA & STRATEGY PHASE]
+        E{Data Engineering} --- E1[Market Data]
+        E1 --- E11[OHLCV]
+        E1 --- E12[Alternative Data]
+        
+        F{Risk Framework} --- F1[Position Sizing]
+        F1 --- F11[VaR Limits]
+        F1 --- F12[Exposure Control]
+        
+        E --- G[Implementation]
+        G === H[Trading Engine]
+        H --- H1[Order Manager]
+        H --- H2[Risk Monitor]
+        
+        %% Key Questions
+        Q1[Data sources & quality?]
+        Q2[Risk parameters?]
+        Q3[Position limits?]
+        Q4[Emergency protocols?]
+        
+        H --- Q1
+        H --- Q2
+        H --- Q3
+        H --- Q4
+    end
+    
+    classDef default fill:white,stroke:#000000,stroke-width:2px,color:#000000
+    classDef main fill:white,stroke:#000000,stroke-width:4px,font-weight:bold,color:#000000
+    classDef question fill:white,stroke:#000000,stroke-width:1px,color:#000000,font-style:italic
+    classDef phase fill:#f5fff5,stroke:#000000,stroke-width:4px,color:#000000
+    
+    class E,F,G,H main
+    class Q1,Q2,Q3,Q4 question
+    class DATA_PHASE phase
